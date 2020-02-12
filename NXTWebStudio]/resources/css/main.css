@@ -1,0 +1,559 @@
+font-face { 
+ 	font-family: Helvetica Neue; 
+ 	src: url('../fonts/HelveticaNeue_2.otf'); } 
+ @font-face { 
+ 	font-family: Helvetica Neue; 
+ 	font-weight: lighter; 
+ 	src: url('../fonts/HelveticaNeue-Light_2.otf');
+ }
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica;
+}
+ul{
+  list-style-type: none;
+}
+
+p, h1, h2, h3, h4, h5 {
+  margin-bottom: 0 !important;
+}
+h1, h2, h3, h4, h5 {
+  line-height: 1.0 !important;
+}
+a:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+a{
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
+.top-screen--mobile {
+  display: none;
+}
+.slider_description div {
+  display: none;
+  position: absolute;
+  padding-right: 200px !important;
+}
+.cd-scroll-down {
+  position: absolute;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  bottom: 20px;
+  width: 38px;
+  height: 44px;
+  background: url("../images/arrows.png") no-repeat center center;
+}
+
+/* No Touch devices */
+.cd-nav-trigger {
+  display: none;
+}
+
+.no-touch #cd-vertical-nav {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.no-touch #cd-vertical-nav li {
+  text-align: right;
+}
+.no-touch #cd-vertical-nav a {
+  display: inline-block;
+  backface-visibility: hidden;
+}
+.no-touch #cd-vertical-nav a:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.no-touch #cd-vertical-nav a span {
+  float: right;
+  display: inline-block;
+  transform: scale(0.6);
+}
+.no-touch #cd-vertical-nav a:hover span {
+  transform: scale(1);
+}
+.no-touch #cd-vertical-nav a:hover .cd-label {
+  opacity: 1;
+}
+.no-touch #cd-vertical-nav a.is-selected .cd-dot {
+  background-color: white;
+}
+.no-touch #cd-vertical-nav .cd-dot {
+  position: relative;
+  /* we set a top value in order to align the dot with the label. If you change label's font, you may need to change this top value*/
+  top: 8px;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background-color: #d88683;
+  transition: transform 0.2s, background-color 0.5s;
+  transform-origin: 50% 50%;
+}
+.no-touch #cd-vertical-nav .cd-label {
+  position: relative;
+  margin-right: 10px;
+  padding: .4em .5em;
+  color: white;
+  font-size: 14px;
+  font-size: 0.875rem;
+  
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0;
+ 
+  transform-origin: 100% 50%;
+}
+
+/* Touch devices */
+.touch .cd-nav-trigger {
+  display: block;
+  z-index: 2;
+  position: fixed;
+  bottom: 30px;
+  right: 5%;
+  height: 44px;
+  width: 44px;
+  border-radius: 0.25em;
+  background: rgba(255, 255, 255, 0.9);
+}
+.touch .cd-nav-trigger span {
+  position: absolute;
+  height: 4px;
+  width: 4px;
+  background-color: #3e3947;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  transform: translateX(-50%) translateY(-50%);
+}
+.touch .cd-nav-trigger span::before, .touch .cd-nav-trigger span::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: inherit;
+  border-radius: inherit;
+}
+.touch .cd-nav-trigger span::before {
+  top: -9px;
+}
+.touch .cd-nav-trigger span::after {
+  bottom: -9px;
+}
+
+.touch #cd-vertical-nav {
+  position: fixed;
+  z-index: 1;
+  right: 5%;
+  bottom: 30px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 90%;
+  overflow-y: scroll;
+  transform-origin: right bottom;
+  transform: scale(0);
+  transition-property: transform;
+  transition-duration: 0.2s;
+  border-radius: 0.25em;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.touch #cd-vertical-nav a {
+  display: block;
+  padding: 1em;
+  border-bottom: 1px solid rgba(62, 57, 71, 0.1);
+}
+.touch #cd-vertical-nav a span:first-child {
+  display: none;
+}
+.touch #cd-vertical-nav a.is-selected span:last-child {
+  color: #d88683;
+}
+.touch #cd-vertical-nav.open {
+  
+  transform: scale(1);
+}
+.touch #cd-vertical-nav.open + .cd-nav-trigger {
+  background-color: transparent;
+}
+.touch #cd-vertical-nav.open + .cd-nav-trigger span {
+  background-color: rgba(62, 57, 71, 0);
+}
+.touch #cd-vertical-nav.open + .cd-nav-trigger span::before, .touch #cd-vertical-nav.open + .cd-nav-trigger span::after {
+  background-color: #3e3947;
+  height: 3px;
+  width: 20px;
+  border-radius: 0;
+  left: -8px;
+}
+.touch #cd-vertical-nav.open + .cd-nav-trigger span::before {
+
+  transform: rotate(45deg);
+  top: 1px;
+}
+.touch #cd-vertical-nav.open + .cd-nav-trigger span::after {
+ 
+  transform: rotate(135deg);
+  bottom: 0;
+}
+.touch #cd-vertical-nav li:last-child a {
+  border-bottom: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .touch .cd-nav-trigger, .touch #cd-vertical-nav {
+    bottom: 40px;
+  }
+}
+#tag-1{
+  display: block;
+}
+.top-section {
+  height: 1150px;
+  overflow: hidden;
+  background-image: url('../images/header_image.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.site-navbar {
+  padding: 30px 0px;
+  /*width: 950px;
+  margin: 0 auto;*/
+}
+#navbarNav {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: inherit;
+}
+.navigation-menu {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.navigation-menu a {
+  color: #2c2c2c !important;
+  font-size: 30px;
+  padding: 0 15px !important;
+  font-family: Georgia;
+  letter-spacing: 2px;
+  border-top: 5px solid transparent; /* border, koito ne se vijda*/
+}
+
+.navigation-menu a:hover {
+  border-top: 5px solid #4acaff; 
+}
+.wrap_input_second-row{
+  display: flex;
+}
+
+.site-navbar--btn {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0px 45px;
+  background-color: rgb(253, 79, 27);
+  color: white;
+  font-size: 22px;
+  margin-left: 30px;
+  text-decoration: none;
+}
+.form-btn{
+  font-size: 20px;
+  color: white;
+  background-color: #4acaff;
+  border: none;
+  width: 140px;
+  height: 52px;
+}
+.talk {
+  width: 212px;
+  height: 57px;
+  color: white;
+  background-color: rgb(253, 79, 27);
+  box-shadow: 0px 8px 10px 0px rgba(0, 89, 141, 0.3);
+  border: none;
+  text-decoration: none;
+  border-radius: 18px;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  
+  justify-content: center;
+}
+.talk:focus{
+  outline: 0;
+}
+.description_button:focus{
+  outline: 0;
+}
+.burger-btn {
+  margin-right: 40px;
+  padding: 2px 5px;
+  border: 2px solid white !important;
+}
+.burger-btn--line {
+  background-image: unset !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+}
+
+.burger-btn:focus {
+  outline: 0;
+}
+.top-content {
+  width: 1000px;
+  margin: 320px auto 0 auto;
+  background-color: rgba(0,0,0, 0.8);
+  display: flex;
+
+  }
+.top-content h1{
+  font-family: Georgia;
+  font-style: italic;
+  font-size: 72px;
+  padding: 80px 160px;
+  color: #ebe7e5;
+  text-align: center;
+}
+
+
+/* contact-section */
+
+.contact-section {
+  display: flex;
+}
+.contact-right {
+  height: inherit;
+  width: 50%;
+  background-color: black;
+  padding: 0px 150px 0px 115px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact-left {
+  height: inherit;
+  width: 50%;
+}
+.contact-left img {
+  width: 100%;
+  height: 100%;
+}
+.contact-right h1 {
+  padding-bottom: 25px;
+  font-size: 30px;
+  color: #f7f4f0;
+  font-family: Georgia;
+}
+.contact-right p {
+  font-size: 24px;
+  color: #f7f4f0;
+  padding-right: 10%;
+  font-family: Helvetica;
+  font-weight: 400;
+}
+.contact_text p{
+  font-weight: 700;
+  font-size: 24px;
+  color: #f7f4f0;
+}
+
+/* gallery-section */
+
+.gallery-section {
+  display: flex;
+  padding-top: 185px;
+}
+.gallery-right {
+  height: inherit;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gallery-left {
+  height: inherit;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gallery-left h1{
+  font-size: 30px;
+  font-family: Georgia;
+}
+.gallery-left p {
+  font-size: 24px;
+  font-family: Montserrat;
+}
+.images{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.gallery-left img {
+    margin-bottom: 100px;
+  }
+  .gallery-right img{
+    margin-bottom: 100px;
+  }
+  .contact_text p{
+    font-size: 30px;
+    font-family: Georgia;
+    color: #2c2c2c;
+  }
+  .pagination{
+    display: flex;
+    justify-content: space-between;
+  }
+  .pagination p{
+    font-size: 24px;
+  }
+/*.gallery-right h1 {
+  padding-bottom: 25px;
+  font-size: 30px;
+  color: #f7f4f0;
+  font-family: Georgia;
+}
+.gallery-right p {
+  font-size: 24px;
+  color: #f7f4f0;
+  padding-right: 10%;
+  font-family: Helvetica;
+  font-weight: 400;
+}
+.gallery_text p{
+  font-weight: 700;
+  font-size: 24px;
+  color: #f7f4f0;
+}*/
+
+@media only screen and (max-width: 1650px) {
+  .gallery-section{
+    margin: 0 2%;
+  }
+  .gallery-left{
+    margin-right: 50px;
+  }
+  .gallery-left img {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-right img{
+    width: 100%;
+    height: auto;
+  }
+}
+@media only screen and (max-width: 1040px) {
+  .top-content{
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .top-section{
+    height: auto;
+  }
+  .contact-right
+   {
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+@media only screen and (max-width: 992px) {
+
+  .navbar-toggler{
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+.burger-btn{
+  margin-right: 0;
+  position: relative;
+  right: 86%;
+}
+ .navigation-menu{
+  background-color: #ebe7e5;
+ }
+
+ .top-content h1{
+  padding: 20px 40px;
+  font-size: 50px;
+  margin: 0 auto;
+ }
+  .gallery-section{
+    margin: 0;
+  }
+  .contact-right, .gallery-section p, .gallery-section h1 {
+    padding: 20px 30px;
+  }
+.contact-section {
+    flex-direction: column;
+    height: unset;
+  }
+  .contact-right {
+    width: 100%;
+    height: 50%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .contact-left {
+    width: 100%;
+    height: 50%;
+  }
+  .contact-left img {
+    height: 100%;
+  }
+  .gallery-section{
+    flex-direction: column;
+    padding-top: 0;
+  }
+  .gallery-right {
+    width: 100%;
+    height: 50%;
+  }
+  
+  .gallery-left {
+    width: 100%;
+    height: 50%;
+  }
+ 
+  .gallery-left img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+  }
+  .gallery-right img{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+  }
+}
