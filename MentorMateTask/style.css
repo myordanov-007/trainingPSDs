@@ -1,0 +1,83 @@
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e6e6e6;
+}
+p, h1, h2, h3, h4, h5 {
+  margin-bottom: 0 !important;
+}
+h1, h2, h3, h4, h5 {
+  line-height: 1.0 !important;
+}
+a:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+a{
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
+/* tsqlata forma */
+.title{
+  color: #000033;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 20px;
+}
+.form-container{
+  width: 450px;
+  margin: 0 auto;
+  padding: 20px 0px 20px 0px;
+}
+.contact-form1{
+  padding: 20px;
+  background: linear-gradient(to top, #787ea1, #000033);
+  color: #fff;
+}
+
+h1, p{
+  text-align: center;
+}
+
+input[type="text"]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  font-size: 17px;
+} 
+
+button{
+  background-color: #4caf50;
+  color: #fff;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  font-size: 17px;    
+}
+
+button:hover{
+  opacity: 1;
+}
+
+
+
+@media only screen and (max-width: 500px){
+  .form-container{
+    width: 100%;
+    padding: 100px 20px 20px 20px;
+  }
+}
